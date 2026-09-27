@@ -1,0 +1,252 @@
+{
+  "name": "Astrology AI agent: natal chart, daily horoscope and tarot chat with RoxyAPI",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "mode": "hostedChat",
+        "initialMessages": "Hi, I am your astrology companion. Tell me your birth date, time and city, and ask about your chart, your day or a tarot card.",
+        "options": {
+          "title": "Astrology companion",
+          "subtitle": "Natal charts, daily horoscopes and tarot, calculated live",
+          "inputPlaceholder": "Born 15 January 1990, 2:30 pm, New York. What is my Sun sign?"
+        }
+      },
+      "id": "94c85494-0971-4264-865b-53f3325d27fc",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        300
+      ],
+      "webhookId": "ff218ac6-7479-4654-acb4-ecff68244929"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are an astrology companion in a chat. Every fact you state about a chart, a sign or a card comes from a RoxyAPI tool call, never from memory.\n\n- A personal reading needs the birth date, the birth time and the birth city. Ask for whatever is missing, one question at a time. If the time is unknown, use 12:00:00 and say that the rising sign and houses may be off.\n- Call Find the birth city first and pass the latitude, longitude and timezone of the first result to Calculate the natal chart.\n- Use Calculate the natal chart for the Sun, Moon and rising sign, the planets and the houses.\n- Use Read the daily horoscope for how a day looks for a zodiac sign. When someone asks about their own day, use their Sun sign from the natal chart.\n- Use Draw the daily tarot card when someone asks for a card or for guidance.\n- Reply warmly and briefly, name the placements you used, and never present health, legal or financial outcomes as certain."
+        }
+      },
+      "id": "b9190c29-34c0-44c2-84fe-889cead7d44d",
+      "name": "Astrology AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        300,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6faf84fa-839b-4e31-a3a7-cbd9f269c98f",
+      "name": "Chat model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        120,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "id": "d12b81c3-225b-4715-85b9-80d7c0a27c44",
+      "name": "Conversation memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        280,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "location",
+        "operation": "searchCities",
+        "q": "={{ $fromAI('city', 'Birth city name, for example New York', 'string') }}",
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "613a40f8-dbbc-48f0-97ae-6bfa180aecb6",
+      "name": "Find the birth city",
+      "type": "@roxyapi/n8n-nodes-roxyapi.roxyApiTool",
+      "typeVersion": 1,
+      "position": [
+        440,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "generateNatalChart",
+        "date": "={{ $fromAI('date', 'Birth date as YYYY-MM-DD', 'string') }}",
+        "time": "={{ $fromAI('time', 'Birth time as HH:MM:SS in 24-hour format, 12:00:00 when unknown', 'string') }}",
+        "latitude": "={{ $fromAI('latitude', 'Latitude of the first Find the birth city result', 'number') }}",
+        "longitude": "={{ $fromAI('longitude', 'Longitude of the first Find the birth city result', 'number') }}",
+        "timezone": "={{ $fromAI('timezone', 'IANA timezone of the first Find the birth city result, for example America/New_York', 'string') }}",
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "05d961e9-2880-4bfc-9e9c-a0d0f4d9b41b",
+      "name": "Calculate the natal chart",
+      "type": "@roxyapi/n8n-nodes-roxyapi.roxyApiTool",
+      "typeVersion": 1,
+      "position": [
+        600,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getDailyHoroscope",
+        "sign": "={{ $fromAI('sign', 'Zodiac sign in lowercase, for example capricorn', 'string') }}",
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "250f9d13-50be-4d7d-bb8e-c9f8acbfd44b",
+      "name": "Read the daily horoscope",
+      "type": "@roxyapi/n8n-nodes-roxyapi.roxyApiTool",
+      "typeVersion": 1,
+      "position": [
+        760,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "tarot",
+        "operation": "getDailyCard",
+        "options": {
+          "seed": "={{ $fromAI('seed', 'The first name of the person asking, so each person gets their own card of the day') }}"
+        },
+        "requestOptions": {}
+      },
+      "id": "0ed7e16d-b7af-45e2-a3c3-a7ca54e940b3",
+      "name": "Draw the daily tarot card",
+      "type": "@roxyapi/n8n-nodes-roxyapi.roxyApiTool",
+      "typeVersion": 1,
+      "position": [
+        920,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Astrology AI agent, built on RoxyAPI\n\nA chat agent that turns a birth date, time and city into a real natal chart, reads the daily horoscope and draws a tarot card, with every answer calculated live and verified against NASA JPL Horizons.\n\n### Set up in three steps\n1. **Install the RoxyAPI node**: Settings → Community Nodes → Install `@roxyapi/n8n-nodes-roxyapi`\n2. **Add your RoxyAPI key** on any RoxyAPI tool; the others reuse it. Get a key at https://roxyapi.com/pricing\n3. **Add a key to the chat model**, or swap it for any chat model n8n supports\n\nThen open the chat and try: *Born 15 January 1990, 2:30 pm, New York. What is my Sun sign and my horoscope today?*",
+        "height": 380,
+        "width": 460
+      },
+      "id": "e91153a9-8dc8-4453-8c5f-e5b7ceda0475",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -520,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "content": "### Customize the agent\n- **Tools**: add any RoxyAPI operation as another tool (Vedic kundli, synastry, numerology, Human Design and more). Click the star on a field to let the model fill it, or use `$fromAI()` on dropdown fields\n- **Voice**: edit the system message on the agent\n- **Publish**: the chat trigger serves a hosted chat page once the workflow is active",
+        "height": 160,
+        "width": 620,
+        "color": 7
+      },
+      "id": "da33dbe3-150c-47d2-83b2-7d5d9b0a2513",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        440,
+        760
+      ]
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Astrology AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Astrology AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Astrology AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find the birth city": {
+      "ai_tool": [
+        [
+          {
+            "node": "Astrology AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculate the natal chart": {
+      "ai_tool": [
+        [
+          {
+            "node": "Astrology AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read the daily horoscope": {
+      "ai_tool": [
+        [
+          {
+            "node": "Astrology AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Draw the daily tarot card": {
+      "ai_tool": [
+        [
+          {
+            "node": "Astrology AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

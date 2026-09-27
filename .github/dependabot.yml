@@ -1,0 +1,7 @@
+version: 2
+updates:
+  # There is no package.json: CI installs the latest RoxyAPI node on every run, so the node needs no bump.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
