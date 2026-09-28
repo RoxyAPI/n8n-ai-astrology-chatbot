@@ -6,6 +6,7 @@
 [![Try the API live](https://img.shields.io/badge/Try_API_Live-Free_in_browser-22c55e?style=for-the-badge&logo=swagger&logoColor=white)](https://roxyapi.com/api-reference)
 [![Remote MCP](https://img.shields.io/badge/Remote_MCP-Streamable_HTTP-6366f1?style=for-the-badge&logo=modelcontextprotocol&logoColor=white)](https://roxyapi.com/docs/mcp)
 [![n8n node](https://img.shields.io/npm/v/@roxyapi/n8n-nodes-roxyapi?style=for-the-badge&label=n8n%20node&color=ea4b71)](https://www.npmjs.com/package/@roxyapi/n8n-nodes-roxyapi)
+[![Video tutorial](https://img.shields.io/badge/Video_tutorial-YouTube-ff0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/oaFNfWYk2PA)
 [![n8n guide](https://img.shields.io/badge/Docs-n8n_guide-3b82f6?style=for-the-badge&logo=n8n&logoColor=white)](https://roxyapi.com/docs/integrations/n8n)
 [![Methodology](https://img.shields.io/badge/Methodology-NASA_JPL_verified-f59e0b?style=for-the-badge&logo=nasa&logoColor=white)](https://roxyapi.com/methodology)
 [![More Templates](https://img.shields.io/badge/More_Templates-RoxyAPI-ec4899?style=for-the-badge&logo=github&logoColor=white)](https://roxyapi.com/templates)
@@ -35,6 +36,12 @@ The reply names real placements (Sun in Capricorn, Moon in Virgo, Gemini rising 
 3. **Add two keys**: open any RoxyAPI tool, create a credential with your key from [roxyapi.com/pricing](https://roxyapi.com/pricing) (the other three tools reuse it), then open **Chat model** and add a key for it.
 
 Press **Open chat** and try the message above. The sticky notes on the canvas repeat these steps.
+
+## Is there a video tutorial?
+
+Yes. [Astrology AI agent in n8n](https://youtu.be/oaFNfWYk2PA) builds this agent from an empty canvas in under three minutes: install the RoxyAPI node, add the chat trigger, the agent, a chat model and memory, connect the city search, natal chart and daily horoscope tools, then ask a birth chart question and read the answer.
+
+[![Astrology AI agent in n8n: the video tutorial](https://img.youtube.com/vi/oaFNfWYk2PA/maxresdefault.jpg)](https://youtu.be/oaFNfWYk2PA)
 
 ## Which RoxyAPI tools does the agent call?
 
