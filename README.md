@@ -31,7 +31,7 @@ The reply names real placements (Sun in Capricorn, Moon in Virgo, Gemini rising 
 
 ## How do I import it into n8n?
 
-1. **Install the RoxyAPI node**: in n8n, open **Settings → Community Nodes → Install** and enter `@roxyapi/n8n-nodes-roxyapi`.
+1. **Install the RoxyAPI node**: in the nodes panel, search for **RoxyAPI**, select it and press **Install node**. It is a verified community node, so this works on n8n Cloud and self-hosted n8n.
 2. **Import the workflow**: download [`astrology-ai-agent.json`](https://github.com/RoxyAPI/n8n-astrology-ai-agent/blob/main/astrology-ai-agent.json), then in a new workflow open the **⋯** menu and choose **Import from File**.
 3. **Add two keys**: open any RoxyAPI tool, create a credential with your key from [roxyapi.com/pricing](https://roxyapi.com/pricing) (the other three tools reuse it), then open **Chat model** and add a key for it.
 
@@ -75,7 +75,7 @@ Yes. The chat trigger is set to **Hosted Chat**, so once the workflow is active 
 
 | Requirement | Version |
 |---|---|
-| n8n | 2.x, self-hosted (n8n Cloud installs verified community nodes only) |
+| n8n | 2.x, n8n Cloud or self-hosted |
 | RoxyAPI n8n node | `@roxyapi/n8n-nodes-roxyapi` 1.0.2 or newer |
 | RoxyAPI key | Any plan; one key covers every domain |
 | Chat model key | Any provider with an n8n chat model node |
