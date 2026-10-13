@@ -3,8 +3,8 @@
   "nodes": [
     {
       "parameters": {
-        "content": "## Astrology AI agent, built on RoxyAPI\n\nA chat agent that turns a birth date, time and city into a real natal chart, reads the daily horoscope and draws a tarot card. Every answer is calculated live and verified against NASA JPL Horizons.\n\n### How it works\n1. The chat trigger hands each message to the AI agent, which keeps the last 10 turns in memory.\n2. The agent finds the birth city first, so nobody is asked for coordinates.\n3. It calls the RoxyAPI tool each question needs, natal chart, daily horoscope or tarot card, and answers from the result.\n\n### Setup\n1. **Install the RoxyAPI node**: search **RoxyAPI** in the nodes panel and press **Install node**. It is verified on n8n Cloud and self-hosted.\n2. **Add your RoxyAPI key** on any RoxyAPI tool; the others reuse it. Get a key at https://roxyapi.com/pricing\n3. **Add a key to the chat model**, or swap it for any chat model n8n supports.\n4. Open the chat and try: *Born 15 January 1990, 2:30 pm, New York. What is my Sun sign and my horoscope today?*\n\n### Customization\n- **Tools**: add any RoxyAPI operation as another tool, such as Vedic kundli, synastry, numerology or Human Design. Click the star on a field to let the model fill it, or use `$fromAI()` on dropdown fields.\n- **Voice**: edit the system message on the agent.\n- **Publish**: the chat trigger serves a hosted chat page once the workflow is active.",
-        "height": 620,
+        "content": "## Astrology AI agent, built on RoxyAPI\n\nA chat agent that turns a birth date, time and city into a real natal chart, reads the daily horoscope and draws a tarot card. Every answer is calculated live and verified against NASA JPL Horizons.\n\n### Who is it for\nAstrology apps, coaches and content creators who want a chat agent that reads real birth charts instead of guessing.\n\n### How it works\n1. The chat trigger hands each message to the AI agent, which keeps the last 10 turns in memory.\n2. The agent finds the birth city first, so nobody is asked for coordinates.\n3. It calls the RoxyAPI tool each question needs, natal chart, daily horoscope or tarot card, and answers from the result.\n\n### Setup\n1. **Install the RoxyAPI node**: search **RoxyAPI** in the nodes panel and press **Install node**. It is verified on n8n Cloud and self-hosted.\n2. **Add your RoxyAPI key** on any RoxyAPI tool; the others reuse it. Get a key at https://roxyapi.com/pricing\n3. **Add a key to the chat model**, or swap it for any chat model n8n supports.\n4. Open the chat and try: *Born 15 January 1990, 2:30 pm, New York. What is my Sun sign and my horoscope today?*\n\n### Requirements\nn8n Cloud or self-hosted with the RoxyAPI node, a RoxyAPI key and a chat model key.\n\n### Customization\n- **Tools**: add any RoxyAPI operation as another tool, such as Vedic kundli, synastry, numerology or Human Design. Click the star on a field to let the model fill it, or use `$fromAI()` on dropdown fields.\n- **Voice**: edit the system message on the agent.\n- **Publish**: the chat trigger serves a hosted chat page once the workflow is active.",
+        "height": 760,
         "width": 560
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -59,7 +59,7 @@
       "typeVersion": 1,
       "position": [
         -620,
-        700
+        840
       ],
       "name": "Sticky Note3",
       "id": "8e8c3314-0881-4fef-a970-0e0f81cbab2f"
