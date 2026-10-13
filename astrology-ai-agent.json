@@ -3,6 +3,85 @@
   "nodes": [
     {
       "parameters": {
+        "content": "## Astrology AI agent, built on RoxyAPI\n\nA chat agent that turns a birth date, time and city into a real natal chart, reads the daily horoscope and draws a tarot card. Every answer is calculated live and verified against NASA JPL Horizons.\n\n### How it works\n1. The chat trigger hands each message to the AI agent, which keeps the last 10 turns in memory.\n2. The agent finds the birth city first, so nobody is asked for coordinates.\n3. It calls the RoxyAPI tool each question needs, natal chart, daily horoscope or tarot card, and answers from the result.\n\n### Setup\n1. **Install the RoxyAPI node**: search **RoxyAPI** in the nodes panel and press **Install node**. It is verified on n8n Cloud and self-hosted.\n2. **Add your RoxyAPI key** on any RoxyAPI tool; the others reuse it. Get a key at https://roxyapi.com/pricing\n3. **Add a key to the chat model**, or swap it for any chat model n8n supports.\n4. Open the chat and try: *Born 15 January 1990, 2:30 pm, New York. What is my Sun sign and my horoscope today?*\n\n### Customization\n- **Tools**: add any RoxyAPI operation as another tool, such as Vedic kundli, synastry, numerology or Human Design. Click the star on a field to let the model fill it, or use `$fromAI()` on dropdown fields.\n- **Voice**: edit the system message on the agent.\n- **Publish**: the chat trigger serves a hosted chat page once the workflow is active.",
+        "height": 620,
+        "width": 560
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -620,
+        40
+      ],
+      "name": "Sticky Note",
+      "id": "e91153a9-8dc8-4453-8c5f-e5b7ceda0475"
+    },
+    {
+      "parameters": {
+        "content": "## Chat agent\nThe chat trigger feeds the agent, which picks a tool for each question.",
+        "height": 240,
+        "width": 600,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        200
+      ],
+      "name": "Sticky Note1",
+      "id": "da33dbe3-150c-47d2-83b2-7d5d9b0a2513"
+    },
+    {
+      "parameters": {
+        "content": "## RoxyAPI tools\nBirth city, natal chart, daily horoscope and tarot card, called by the agent as needed.",
+        "height": 240,
+        "width": 660,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        440,
+        460
+      ],
+      "name": "Sticky Note2",
+      "id": "d2bd82d1-ba4c-4a31-8f09-d7f1aa0d37da"
+    },
+    {
+      "parameters": {
+        "content": "## Watch it built\n@[youtube](oaFNfWYk2PA)",
+        "height": 360,
+        "width": 560,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -620,
+        700
+      ],
+      "name": "Sticky Note3",
+      "id": "8e8c3314-0881-4fef-a970-0e0f81cbab2f"
+    },
+    {
+      "parameters": {
+        "content": "## Model and memory\nAny chat model; memory keeps 10 turns.",
+        "height": 240,
+        "width": 340,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        80,
+        460
+      ],
+      "name": "Sticky Note4",
+      "id": "7e574941-992b-4f68-87ed-3eca12bad91b"
+    },
+    {
+      "parameters": {
         "public": true,
         "mode": "hostedChat",
         "initialMessages": "Hi, I am your astrology companion. Tell me your birth date, time and city, and ask about your chart, your day or a tarot card.",
@@ -132,37 +211,6 @@
       "position": [
         920,
         560
-      ]
-    },
-    {
-      "parameters": {
-        "content": "## Astrology AI agent, built on RoxyAPI\n\nA chat agent that turns a birth date, time and city into a real natal chart, reads the daily horoscope and draws a tarot card, with every answer calculated live and verified against NASA JPL Horizons.\n\n### Set up in three steps\n1. **Install the RoxyAPI node**: Settings → Community Nodes → Install `@roxyapi/n8n-nodes-roxyapi`\n2. **Add your RoxyAPI key** on any RoxyAPI tool; the others reuse it. Get a key at https://roxyapi.com/pricing\n3. **Add a key to the chat model**, or swap it for any chat model n8n supports\n\nThen open the chat and try: *Born 15 January 1990, 2:30 pm, New York. What is my Sun sign and my horoscope today?*",
-        "height": 380,
-        "width": 460
-      },
-      "id": "e91153a9-8dc8-4453-8c5f-e5b7ceda0475",
-      "name": "Sticky Note",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -520,
-        120
-      ]
-    },
-    {
-      "parameters": {
-        "content": "### Customize the agent\n- **Tools**: add any RoxyAPI operation as another tool (Vedic kundli, synastry, numerology, Human Design and more). Click the star on a field to let the model fill it, or use `$fromAI()` on dropdown fields\n- **Voice**: edit the system message on the agent\n- **Publish**: the chat trigger serves a hosted chat page once the workflow is active",
-        "height": 160,
-        "width": 620,
-        "color": 7
-      },
-      "id": "da33dbe3-150c-47d2-83b2-7d5d9b0a2513",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        440,
-        760
       ]
     }
   ],
