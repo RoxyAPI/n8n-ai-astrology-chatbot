@@ -68,7 +68,7 @@ The city search returns coordinates and an IANA timezone, so a summer birth and 
 ## How do I import it into n8n?
 
 1. **Install the RoxyAPI node**: in the nodes panel, search for **RoxyAPI**, select it and press **Install node**. It is a verified community node, so this works on n8n Cloud and self-hosted n8n.
-2. **Import the workflow**: download [`ai-astrology-chatbot.json`](https://github.com/RoxyAPI/n8n-ai-astrology-chatbot/blob/main/ai-astrology-chatbot.json), then in a new workflow open the **⋯** menu and choose **Import from File**.
+2. **Import the workflow**: download [`ai-astrology-chatbot.json`](https://github.com/RoxyAPI/n8n-ai-astrology-chatbot/releases/latest/download/ai-astrology-chatbot.json) from the latest release, then in a new workflow open the **⋯** menu and choose **Import from File**.
 3. **Create the profile table**: run **Run once to create the profile table**. It creates the `astrology_profiles` Data Table and reuses it when it already exists.
 4. **Add your RoxyAPI key**: open any RoxyAPI node and create a credential with your key from [roxyapi.com/pricing](https://roxyapi.com/pricing). The other RoxyAPI nodes reuse it.
 5. **Pick your AI provider**: add a key to the Google Gemini, OpenAI or Anthropic model node and set **aiProvider** in **Workflow settings** to `gemini`, `openai` or `anthropic`.
