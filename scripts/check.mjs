@@ -1,10 +1,10 @@
 /**
  * Checks the workflow against the published RoxyAPI n8n node, so a renamed operation or field
- * fails here instead of in a user's n8n.
+ * fails here instead of in the n8n of a user.
  *
  * Run:    npm install --no-save --legacy-peer-deps @roxyapi/n8n-nodes-roxyapi n8n-workflow && node scripts/check.mjs
- * Does:   parses astrology-ai-agent.json, refuses stored credentials or keys, and confirms every
- *         RoxyAPI tool names a resource, operation and field that the installed node defines.
+ * Does:   parses ai-astrology-chatbot.json, refuses stored credentials or keys, and confirms every
+ *         RoxyAPI node and tool names a resource, operation and field that the installed node defines.
  * Writes: nothing; exits non-zero on the first class of problem it finds.
  * Pairs:  .github/workflows/ci.yml runs it on every push and weekly against the latest node.
  */
@@ -12,7 +12,7 @@ import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const workflow = JSON.parse(readFileSync(new URL('../astrology-ai-agent.json', import.meta.url), 'utf8'));
+const workflow = JSON.parse(readFileSync(new URL('../ai-astrology-chatbot.json', import.meta.url), 'utf8'));
 const { RoxyApi } = require('@roxyapi/n8n-nodes-roxyapi/dist/nodes/RoxyApi/RoxyApi.node.js');
 const properties = new RoxyApi().description.properties;
 const problems = [];
@@ -30,7 +30,8 @@ function fieldsOf(resource, operation) {
 }
 
 const resourceDefault = properties.find((p) => p.name === 'resource').default;
-for (const node of workflow.nodes.filter((n) => n.type === '@roxyapi/n8n-nodes-roxyapi.roxyApiTool')) {
+const roxyTypes = new Set(['@roxyapi/n8n-nodes-roxyapi.roxyApi', '@roxyapi/n8n-nodes-roxyapi.roxyApiTool']);
+for (const node of workflow.nodes.filter((n) => roxyTypes.has(n.type))) {
   const { resource = resourceDefault, operation, options = {}, ...rest } = node.parameters;
   const selector = properties.find((p) => p.name === 'operation' && p.displayOptions?.show?.resource?.includes(resource));
   if (!selector?.options.some((o) => o.value === operation)) {
