@@ -1444,8 +1444,8 @@
     },
     {
       "parameters": {
-        "content": "## AI astrology readings with RoxyAPI\n\nA multi-agent astrology reader for web chat and Telegram. A reader agent hands each question to specialists in Western astrology, Vedic astrology, numerology, tarot and I Ching, Human Design and Chinese BaZi. Every chart, number and card comes from a live RoxyAPI calculation verified against NASA JPL Horizons, never from the model.\n\n### Who is it for\nAstrology apps, coaches, creators and communities who want a reader that remembers each person and sends a daily forecast.\n\n### How it works\n1. Chat and Telegram messages share one path. The saved birth profile loads before the reader answers.\n2. The reader finds the birth city, saves the profile and asks the right specialist, or four of them for a compatibility report.\n3. Each morning, Telegram subscribers get a personal forecast: day number, Moon phase, the week ahead, and a sky alert on days with a major transit or a new or full Moon.\n\n### How to set up\n1. Install the RoxyAPI node from the nodes panel.\n2. Run **Run once to create the profile table**.\n3. Add your RoxyAPI key ([roxyapi.com/pricing](https://roxyapi.com/pricing)) on any RoxyAPI node.\n4. Add your AI provider key and set **aiProvider** in **Workflow settings**.\n5. Add a Telegram bot token, or delete the three Telegram nodes.\n6. Activate the workflow and open the chat.\n\n### Requirements\nA RoxyAPI key, a Google Gemini, OpenAI or Anthropic key, and optionally a Telegram bot.\n\n### How to customize\nAdd RoxyAPI tools to any specialist, edit its system message, or change the morning hour.",
-        "height": 1240,
+        "content": "## AI astrology readings with RoxyAPI\n\nA multi-agent AI astrology reader for n8n web chat and Telegram. A reader agent hands each question to six specialist agents, saves every birth profile, writes cross-system compatibility reports and sends Telegram subscribers a daily forecast. Every chart, number and card comes from a live RoxyAPI calculation verified against NASA JPL Horizons, never from the model.\n\n### Who is it for\nAstrology apps, coaches, creators and communities that want a reader with memory.\n\n### How it works\n1. Chat and Telegram messages share one path, and the saved birth profile loads from a Data Table.\n2. The reader finds the birth city, saves the profile and asks the right specialist: Western, Vedic, numerology, tarot and I Ching, Human Design or Chinese BaZi.\n3. A compatibility request asks four specialists and returns one report.\n4. Each morning at 7, Telegram subscribers get a personal forecast with a sky alert on major transit, new Moon and full Moon days.\n\n### How to set up\n1. Install the RoxyAPI node from the nodes panel.\n2. Run **Run once to create the profile table**.\n3. Add your RoxyAPI key ([roxyapi.com/pricing](https://roxyapi.com/pricing)) on any RoxyAPI node. n8n applies it to all of them.\n4. Add your AI provider key and set **aiProvider** in **Workflow settings**. One key only: delete the other two models and connect yours to all three Model inputs.\n5. Add a Telegram bot token to the three Telegram nodes, or delete them.\n6. Activate the workflow and open the chat.\n\n### Requirements\nn8n 2.x with Data Tables, a RoxyAPI key, a Google Gemini, OpenAI or Anthropic key, and optionally a Telegram bot.\n\n### How to customize\nAdd any RoxyAPI operation to a specialist, add a specialist for another domain, edit a system message, or change the morning hour.",
+        "height": 800,
         "width": 660
       },
       "id": "a57a0000-0000-4000-8000-00000000004c",
@@ -1582,7 +1582,7 @@
       "typeVersion": 1,
       "position": [
         -760,
-        1020
+        580
       ]
     }
   ],
