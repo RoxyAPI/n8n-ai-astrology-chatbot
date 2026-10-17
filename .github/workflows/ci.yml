@@ -7,6 +7,8 @@ on:
   # Weekly, so a new release of the RoxyAPI node that renames an operation or field fails here first.
   schedule:
     - cron: '0 7 * * 1'
+  # Publishes the current file as a release without a change to it.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -21,3 +23,35 @@ jobs:
           node-version: '24'
       - run: npm install --no-save --legacy-peer-deps @roxyapi/n8n-nodes-roxyapi n8n-workflow
       - run: node scripts/check.mjs
+
+  # Every verified change to the workflow on main becomes a release with the file attached, so
+  # releases/latest/download/ai-astrology-chatbot.json always serves the newest version.
+  release:
+    needs: verify
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = push ] && git diff --quiet HEAD~1 HEAD -- ai-astrology-chatbot.json; then
+            echo "Workflow file unchanged, no release."
+            exit 0
+          fi
+          tag="v$(date -u +%Y.%m.%d)-$(git rev-parse --short HEAD)"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists."
+            exit 0
+          fi
+          gh release create "$tag" ai-astrology-chatbot.json \
+            --title "AI astrology chatbot workflow $tag" \
+            --notes "$(git log -1 --format=%s)
+
+          Import ai-astrology-chatbot.json into n8n: open the menu of a new workflow and choose Import from File. Setup steps are in the README." \
+            --latest
