@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://roxyapi.com">
+    <img src="https://raw.githubusercontent.com/RoxyAPI/n8n-ai-astrology-chatbot/main/assets/hero.png" alt="n8n AI Astrology Chatbot: a free MIT n8n workflow template for multi-agent AI astrology readings on web chat and Telegram, built on RoxyAPI" width="100%">
+  </a>
+</p>
+
 # n8n AI Astrology Chatbot Template: Multi-Agent Readings for Birth Charts, Vedic Kundli, Tarot, Numerology and Daily Forecasts
 
 > An import-ready n8n workflow for AI astrology readings on web chat and Telegram. A reader agent hands each question to specialist agents for Western astrology, Vedic astrology, numerology, tarot and I Ching, Human Design and Chinese BaZi, remembers every birth profile, writes cross-system compatibility reports and sends each subscriber a personal forecast every morning. Every chart, number and card comes from a live [RoxyAPI](https://roxyapi.com) calculation verified against NASA JPL Horizons, not from the model, and it runs on Google Gemini, OpenAI or Anthropic.
