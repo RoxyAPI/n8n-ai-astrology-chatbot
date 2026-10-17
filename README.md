@@ -6,11 +6,18 @@
 [![Try the API live](https://img.shields.io/badge/Try_API_Live-Free_in_browser-22c55e?style=for-the-badge&logo=swagger&logoColor=white)](https://roxyapi.com/api-reference)
 [![Remote MCP](https://img.shields.io/badge/Remote_MCP-Streamable_HTTP-6366f1?style=for-the-badge&logo=modelcontextprotocol&logoColor=white)](https://roxyapi.com/docs/mcp)
 [![n8n node](https://img.shields.io/npm/v/@roxyapi/n8n-nodes-roxyapi?style=for-the-badge&label=n8n%20node&color=ea4b71)](https://www.npmjs.com/package/@roxyapi/n8n-nodes-roxyapi)
+[![Video walkthrough](https://img.shields.io/badge/Video_walkthrough-YouTube-ff0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/QYLg9g_YrzE)
 [![n8n guide](https://img.shields.io/badge/Docs-n8n_guide-3b82f6?style=for-the-badge&logo=n8n&logoColor=white)](https://roxyapi.com/docs/integrations/n8n)
 [![Methodology](https://img.shields.io/badge/Methodology-NASA_JPL_verified-f59e0b?style=for-the-badge&logo=nasa&logoColor=white)](https://roxyapi.com/methodology)
 [![More Templates](https://img.shields.io/badge/More_Templates-RoxyAPI-ec4899?style=for-the-badge&logo=github&logoColor=white)](https://roxyapi.com/templates)
 
 ![The AI astrology chatbot workflow in the n8n editor: chat and Telegram triggers, a reader agent, a model selector over three AI providers, specialist agents with their RoxyAPI tools, and the daily forecast branch](https://raw.githubusercontent.com/RoxyAPI/n8n-ai-astrology-chatbot/main/screenshots/workflow-canvas.png)
+
+## Is there a video walkthrough?
+
+Yes. [n8n AI astrology chatbot: multi-agent readings with one RoxyAPI key](https://youtu.be/QYLg9g_YrzE) imports this workflow from its GitHub URL, creates the profile table, adds the RoxyAPI and Gemini keys, connects one model to the model selector, then asks for a birth chart and a four-system compatibility report.
+
+[![The n8n AI astrology chatbot video walkthrough](https://img.youtube.com/vi/QYLg9g_YrzE/maxresdefault.jpg)](https://youtu.be/QYLg9g_YrzE)
 
 ## What does this n8n workflow do?
 

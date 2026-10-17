@@ -1568,6 +1568,22 @@
         640,
         2180
       ]
+    },
+    {
+      "parameters": {
+        "content": "## Video walkthrough\n@[youtube](QYLg9g_YrzE)",
+        "height": 440,
+        "width": 660,
+        "color": 7
+      },
+      "id": "a57a0000-0000-4000-8000-000000000054",
+      "name": "Sticky Note 8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -760,
+        1020
+      ]
     }
   ],
   "connections": {
