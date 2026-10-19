@@ -6,8 +6,12 @@
 
 # n8n AI Astrology Chatbot Template: Multi-Agent Readings for Birth Charts, Vedic Kundli, Tarot, Numerology and Daily Forecasts
 
-> An import-ready n8n workflow for AI astrology readings on web chat and Telegram. A reader agent hands each question to specialist agents for Western astrology, Vedic astrology, numerology, tarot and I Ching, Human Design and Chinese BaZi, remembers every birth profile, writes cross-system compatibility reports and sends each subscriber a personal forecast every morning. Every chart, number and card comes from a live [RoxyAPI](https://roxyapi.com) calculation verified against NASA JPL Horizons, not from the model, and it runs on Google Gemini, OpenAI or Anthropic.
+> An import-ready n8n workflow for AI astrology readings on web chat and Telegram. A reader agent hands each question to specialist agents for Western astrology, Vedic astrology, numerology, tarot and I Ching, Human Design and Chinese BaZi, remembers every birth profile, writes cross-system compatibility reports and sends each subscriber a personal forecast every morning. Every chart, number and card comes from a live [RoxyAPI](https://roxyapi.com) calculation; planetary positions are verified against NASA JPL Horizons. It runs on Google Gemini, OpenAI or Anthropic.
 
+**[Use this approved template in the n8n workflow library](https://n8n.io/workflows/21165-give-ai-astrology-readings-via-chat-and-telegram-with-roxyapi-gemini-openai-and-claude/)**: select **Use for free** to start. It uses the [official RoxyAPI node verified by n8n](https://n8n.io/integrations/roxyapi/) on n8n Cloud or self-hosted n8n. The template is free; a RoxyAPI key and an AI provider key are required.
+
+[![Use template on n8n](https://img.shields.io/badge/n8n-Use_template-ea4b71?style=for-the-badge&logo=n8n&logoColor=white)](https://n8n.io/workflows/21165-give-ai-astrology-readings-via-chat-and-telegram-with-roxyapi-gemini-openai-and-claude/)
+[![Verified n8n node](https://img.shields.io/badge/n8n-Verified_node-ea4b71?style=for-the-badge&logo=n8n&logoColor=white)](https://n8n.io/integrations/roxyapi/)
 [![Get API Key](https://img.shields.io/badge/Get_API_Key-RoxyAPI-14b8a6?style=for-the-badge&logo=key&logoColor=white)](https://roxyapi.com/pricing)
 [![Try the API live](https://img.shields.io/badge/Try_API_Live-Free_in_browser-22c55e?style=for-the-badge&logo=swagger&logoColor=white)](https://roxyapi.com/api-reference)
 [![Remote MCP](https://img.shields.io/badge/Remote_MCP-Streamable_HTTP-6366f1?style=for-the-badge&logo=modelcontextprotocol&logoColor=white)](https://roxyapi.com/docs/mcp)
@@ -67,6 +71,8 @@ The city search returns coordinates and an IANA timezone, so a summer birth and 
 
 ## How do I import it into n8n?
 
+Start from the [approved n8n template listing](https://n8n.io/workflows/21165-give-ai-astrology-readings-via-chat-and-telegram-with-roxyapi-gemini-openai-and-claude/) with **Use for free**, or import the GitHub release file below.
+
 1. **Install the RoxyAPI node**: in the nodes panel, search for **RoxyAPI**, select it and press **Install node**. It is a verified community node, so this works on n8n Cloud and self-hosted n8n.
 2. **Import the workflow**: download [`ai-astrology-chatbot.json`](https://github.com/RoxyAPI/n8n-ai-astrology-chatbot/releases/latest/download/ai-astrology-chatbot.json) from the latest release, then in a new workflow open the **⋯** menu and choose **Import from File**.
 3. **Create the profile table**: run **Run once to create the profile table**. It creates the `astrology_profiles` Data Table and reuses it when it already exists.
@@ -113,7 +119,7 @@ Yes. The chat trigger is set to **Hosted Chat**, so once the workflow is active 
 
 ## Built with RoxyAPI
 
-[RoxyAPI](https://roxyapi.com) is the Spiritual OS layer for agentic AI: Western and Vedic astrology, Human Design, numerology, tarot, the I Ching and many more insight domains on one API key, verified against NASA JPL Horizons, with typed SDKs, Remote MCP and flat pricing. Learn more in the [n8n guide](https://roxyapi.com/docs/integrations/n8n), the [API reference](https://roxyapi.com/api-reference), the [methodology](https://roxyapi.com/methodology) and the other [open source templates](https://roxyapi.com/templates).
+[RoxyAPI](https://roxyapi.com) is the Spiritual OS layer for agentic AI: Western and Vedic astrology, Human Design, numerology, tarot, the I Ching and many more insight domains on one API key, with planetary positions verified against NASA JPL Horizons, typed SDKs, Remote MCP and flat pricing. Learn more in the [n8n guide](https://roxyapi.com/docs/integrations/n8n), the [API reference](https://roxyapi.com/api-reference), the [methodology](https://roxyapi.com/methodology) and the other [open source templates](https://roxyapi.com/templates).
 
 ## License
 
